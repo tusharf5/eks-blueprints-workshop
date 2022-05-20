@@ -15,7 +15,7 @@ export default class PipelineConstruct extends Construct {
     const blueprint = blueprints.EksBlueprint.builder()
     .account(account)
     .region(region)
-    .addOns()
+    .addOns(new blueprints.ClusterAutoScalerAddOn) // Cluster Autoscaler addon goes here
     .teams(new TeamPlatform(account), new TeamApplication('burnham',account));
   
     blueprints.CodePipelineStack.builder()
